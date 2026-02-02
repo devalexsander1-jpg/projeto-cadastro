@@ -1,13 +1,19 @@
 #criar um projeto de cadastro
 
-lista = []
+from cliente import Cliente
+from repositorio import RepositorioClientes
 
-i = 0
+repo = RepositorioClientes()
 
 while True :
 	name = input("qual o nome do cliente: se quiser sair digite (sair) ")
-	lista.append(name)
-	if name == "sair":
+	
+	if name.lower() == "sair":
 		break
 
-print(lista)
+	cliente = Cliente(name)
+	repo.adicionar(cliente)
+
+print("\nClientes cadastrados: ")
+for c in repo.listar():
+	print(c)

@@ -2,18 +2,10 @@
 
 from cliente import Cliente
 from repositorio import RepositorioClientes
+from interface import Interface
 
-repo = RepositorioClientes()
+if __name__ == "__main__":
+	repo = RepositorioClientes()
+	app = Interface(repo)
+	app.iniciar()
 
-while True :
-	name = input("qual o nome do cliente: se quiser sair digite (sair) ")
-	
-	if name.lower() == "sair":
-		break
-
-	cliente = Cliente(name)
-	repo.adicionar(cliente)
-
-print("\nClientes cadastrados: ")
-for c in repo.listar():
-	print(c)
